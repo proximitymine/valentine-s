@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Proposal</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+      overflow: auto;
+    }
+    .container {
+      padding: 50px 20px;
+      z-index: 10;
+      position: relative;
+    }
+    #main-content {
+      display: none;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .heart {
+      font-size: 100px;
+      color: #ff6b81;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .proposal-button {
+      background: #ff6b81;
+      color: white;
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
+    }
+    .proposal-button:hover {
+      background: #ff4757;
+    }
+    .hidden-message {
+      display: none;
+      font-size: 2rem;
+      margin-top: 30px;
+      color: #fff;
+    }
+    .response-buttons {
+      margin-top: 20px;
+    }
+    .response-button {
+      background: #ff4757;
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      margin: 0 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
+    }
+    .response-button:hover {
+      background: #e84118;
+    }
+    .photo-gallery {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .photo-gallery img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      animation: image-pop 6s infinite alternate ease-in-out;
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+    @keyframes image-pop {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(5deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    .photo-gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+.photo-gallery img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      animation: image-pop 6s infinite alternate ease-in-out, fade-in 2s ease-in;
+      transition: transform 0.5s, box-shadow 0.5s, border-color 0.5s;
+      border: 3px solid transparent;
+    }
+    .photo-gallery img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border-color: #ff6b81;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+      animation: sparkle 3s infinite;
+    }
+    @keyframes sparkle {
+      0% { opacity: 1; transform: scale(1) translateY(0); }
+      50% { opacity: 0.5; transform: scale(1.5) translateY(-20px); }
+      100% { opacity: 0; transform: scale(0.5) translateY(-40px); }
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff4757;
+      animation: confetti-fall 4s ease-in-out infinite;
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+  <div class="twinkling-stars"></div>
+  <div class="falling-petals">
+    <div class="petal" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="petal" style="left: 30%; animation-delay: 1s;"></div>
+    <div class="petal" style="left: 50%; animation-delay: 2s;"></div>
+    <div class="petal" style="left: 70%; animation-delay: 3s;"></div>
+    <div class="petal" style="left: 90%; animation-delay: 4s;"></div>
+  </div>
+  <div id="password-prompt" class="container">
+    <h1>Guess the Password</h1>
+    <input type="password" id="password" placeholder="Password" style="padding: 10px; font-size: 1.2rem; border-radius: 8px; border: 1px solid #ccc;">
+    <button class="proposal-button" onclick="checkPassword()">Submit</button>
+  </div>
+  <div class="container" id="main-content">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p>You are the love of my life.</p>
+    <div class="heart">💖</div>
+    <p>There's something I need to ask you...</p>
+    <button class="proposal-button" onclick="revealProposal()">Click to Reveal</button>
+    <div class="hidden-message" id="proposal-message">
+      Will you be my Valentine? ❤️
+      <div class="response-buttons">
+        <button class="response-button" onclick="showResponse('Yes')">Yes</button>
+        <button class="response-button" onclick="showResponse('No')">No</button>
+      </div>
+    </div>
+    <div class="response-message" id="response-message"></div>
+    <div class="photo-gallery floating-gallery">
+  <img src="./images/unnamed.jpg" alt="Photo 1">
+  <img src="./images/unnamed (1).jpg" alt="Photo 2">
+  <img src="./images/unnamed (2).jpg" alt="Photo 3">
+  <img src="./images/unnamed (3).jpg" alt="Photo 4">
+  <img src="./images/unnamed (4).jpg" alt="Photo 5">
+  <img src="./images/unnamed (5).jpg" alt="Photo 6">
+  <img src="./images/unnamed (6).jpg" alt="Photo 7">
+</div>
+  </div>
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      if (password === '2102') {
+        document.getElementById('password-prompt').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        alert('Incorrect password. Please try again.');
+      }
+    }
+
+    function revealProposal() {
+      document.getElementById('proposal-message').style.display = 'block';
+      generateConfetti();
+    }
+
+    function generateConfetti() {
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    function showResponse(response) {
+      const responseMessage = document.getElementById('response-message');
+      if (response === 'Yes') {
+        responseMessage.innerHTML = 'Good Choice Baby ❤️<br><br>Keep in mind the love code is: <strong>1337</strong> (you will need it 😘)';
+      } else {
+        responseMessage.innerHTML = 'There is no answer in this question. You are my wife, be serious.';
+      }
+    }
+
+    // Create floating hearts
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
